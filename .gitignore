@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.env
+.venv
+docuflow_v2_env/
+
+# Vector DB / local data
+vector_db/*
+!vector_db/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db

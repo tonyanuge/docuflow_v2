@@ -1,0 +1,34 @@
+From: Sarah Collins <sarah.collins@example.com>
+To: Operations Team <ops@example.com>
+Subject: Request to Update Customer Payment Date
+Date: Tue, 11 Feb 2025 09:42:13 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="sample-boundary"
+
+--sample-boundary
+Content-Type: text/plain; charset="UTF-8"
+
+Hi team,
+
+Can you please update the customer’s payment date to the 15th of each month?
+This is urgent as the customer is going into arrears and requested immediate action.
+
+Account Number: 12345678
+
+Thanks,
+Sarah
+
+--sample-boundary
+Content-Type: text/html; charset="UTF-8"
+
+<html>
+  <body>
+    <p>Hi team,</p>
+    <p>Can you please update the customer’s payment date to the <b>15th of each month</b>?</p>
+    <p>This is urgent as the customer is going into arrears and requested immediate action.</p>
+    <p><br>Account Number: <b>12345678</b></p>
+    <p>Thanks,<br>Sarah</p>
+  </body>
+</html>
+
+--sample-boundary--

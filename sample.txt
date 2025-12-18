@@ -1,0 +1,32 @@
+Develop a comprehensive authentication system for Unseen, structured around three key phases: Multi-Factor Authentication, LinkedIn Account Verification, and AI-Based Identity & Profile Photo Verification.
+
+Step 1: Multi-Factor Authentication (MFA)
+Objective: Implement secure login and authentication via a secondary verification method.
+Actions:
+
+Set up the standard username/password login process.
+Integrate an SMS or email verification API, such as Twilio or Firebase Authentication.
+Alternatively, provide support for authenticator apps like Google Authenticator or Authy.
+Clearly guide users during signup or login to complete MFA setup.
+Technology Tools: Twilio, Firebase Auth, Google Authenticator SDK/API.
+Outcome: Ensures users confirm their identities through a secondary verification method upon each login, enhancing security.
+Step 2: LinkedIn (or Social) Account Verification (Optional but Encouraged)
+Objective: Establish credibility and authenticity by allowing users to verify identities through reputable third-party platforms like LinkedIn.
+Actions:
+
+Obtain LinkedIn OAuth credentials by registering your app on the LinkedIn Developers Portal.
+Integrate LinkedIn’s OAuth 2.0 authentication flow into your login process.
+Provide clear prompts during registration to connect or link their LinkedIn account.
+Securely store verified LinkedIn data; specify publicly visible data (job title, industry) while keeping sensitive information private.
+Technology Tools: LinkedIn API, OAuth 2.0 authentication libraries (OAuth.io, Passport.js for Node, Firebase Authentication).
+Outcome: Users receive visible “LinkedIn verified” badges on their profiles, increasing trustworthiness.
+Step 3: AI-Based Identity & Profile Photo Verification
+Objective: Prevent fake profiles using AI-driven facial recognition and identity verification.
+Actions:
+
+Integrate facial recognition or biometric APIs, such as Amazon Rekognition, Azure Face API, or Face++ API.
+Prompt users during account setup or profile photo update to submit a live selfie for verification.
+Use AI facial analysis to compare the live selfie against uploaded profile photos.
+Implement a verification status indicator (e.g., “Verified Profile”) once identity is confirmed.
+Provide manual review fallback for cases flagged in verification.
+Outcome: Reduces the prevalence of fake profiles through reliable AI-driven verification.

@@ -22,19 +22,19 @@ Client (API / UI)
         v
 FastAPI Application
         |
-        +-- Hybrid Search Engine
+        + Hybrid Search Engine
         |     - FAISS (vector recall)
         |     - Keyword reranking
         |
-        +-- Classification Layer
+        + Classification Layer
         |
-        +-- Workflow Router (YAML rules)
+        + Workflow Router (YAML rules)
         |
-        +-- Permission Guard (RBAC)
+        + Permission Guard (RBAC)
         |
-        +-- Workflow Executor
+        + Workflow Executor
         |
-        +-- Audit Logger (JSONL, append-only)
+        + Audit Logger (JSONL, append-only)
 
 Core Components
 1. Hybrid Search Engine
@@ -56,7 +56,7 @@ Example:
 routes:
   - when:
       classification: payment_request
-      keyword_contains: ["arrears", "payment"]
+      keyword_contains: [arrears, payment]
     route:
       department: finance
       action: review_payment
@@ -185,6 +185,6 @@ Project Status
 
 Next (optional):
 
-Dockerisation
-HTML UI
-Authentication integration
+- Dockerisation
+- HTML UI
+- Authentication integration

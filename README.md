@@ -213,7 +213,7 @@ Project Status
 Not implemented (not "coming soon" — out of scope for this prototype):
 
 - Authentication / per-user identity
-- Real external integrations (queueing, webhooks, notifications) — execution
+- Real external integrations (queueing, webhooks, notifications), execution
   is simulated only
 - Tamper-evident or access-controlled audit storage
 - An HTML UI beyond the single static demo page in `ui/`

@@ -72,3 +72,15 @@ flowchart TD
 - Routing logic is externalised and auditable
 - Permissions and audit are enforced outside business logic
 - Industry-agnostic by design
+
+ Scope of this diagram
+This diagram describes the current, documented DocuFlow v2 system, which
+lives entirely under `ml-api-service/`. The repository also contains
+`legacy_prototype/`, an earlier and architecturally unrelated set of
+prototype scripts (see `legacy_prototype/README.md`) — it is not part of this
+architecture and nothing in it is used by the system shown above.
+
+Note also that "Permission Guard" here enforces a capability check against a
+single statically configured role (no authentication / no per-user
+identity), and "Workflow Executor" performs simulated execution only — it
+does not call any real external queue, webhook, or notification system.

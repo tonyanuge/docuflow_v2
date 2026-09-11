@@ -8,21 +8,38 @@ class WorkflowExecutor:
 
     def execute(self, *, decision: dict, context: dict) -> dict:
         """
-        Execute a routing decision.
+        Execute a routing decision (simulated — no external side effects).
         Returns execution result.
+
+        rules.yaml decisions carry `queue` / `priority` rather than an
+        explicit `action`. If a rule does specify `action` directly, that
+        takes precedence; otherwise a `queue` decision is treated as the
+        "queue" action so the routing outcome actually drives simulated
+        execution instead of silently falling back to log-only.
         """
 
-        action = decision.get("action", "log")
+        if "action" in decision:
+            action = decision["action"]
+        elif "queue" in decision:
+            action = "queue"
+        else:
+            action = "log"
 
         result = {
             "action": action,
             "status": "completed"
         }
 
-        # ---- Supported actions ----
+        # ---- Supported actions (simulated, no external side effects) ----
 
         if action == "queue":
-            result["message"] = "Item queued for processing"
+            queue_name = decision.get("queue", "unspecified")
+            priority = decision.get("priority", "normal")
+            result["message"] = (
+                f"Item queued to '{queue_name}' (priority: {priority})"
+            )
+            result["queue"] = queue_name
+            result["priority"] = priority
 
         elif action == "tag":
             result["message"] = "Metadata tag applied"

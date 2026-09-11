@@ -3,15 +3,27 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.pytest_cache/
 
 # Virtual environments
 .env
 .venv
 docuflow_v2_env/
 
-# Vector DB / local data
-vector_db/*
-!vector_db/.gitkeep
+# Generated FAISS index + metadata (ml-api-service)
+ml-api-service/data/*
+!ml-api-service/data/.gitkeep
+
+ml-api-service/vector_db/*.index
+ml-api-service/vector_db/metadata.json
+
+# Runtime audit logs
+ml-api-service/audit_logs/*
+!ml-api-service/audit_logs/.gitkeep
+
+# Legacy prototype's generated SQLite DB / native extension binary
+legacy_prototype/vector_db/*.db
+legacy_prototype/vector_db/*.dll
 
 # OS files
 .DS_Store

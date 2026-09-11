@@ -4,8 +4,6 @@ from typing import List, Dict
 
 from nlp.embedder import get_embedding
 
-print("[HYBRID] Loaded hybrid_search.py from:", __file__)
-
 
 # ====================================================
 # Keyword utilities

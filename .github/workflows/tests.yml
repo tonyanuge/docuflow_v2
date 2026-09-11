@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Deliberately not requirements.txt: these tests only exercise the
+      # routing/permissions/execution logic, which needs pytest + PyYAML —
+      # not FAISS or the sentence-transformers model. See docs/RUNBOOK.md.
+      - name: Install test dependencies
+        run: pip install -r ml-api-service/tests/requirements-test.txt
+
+      - name: Run tests
+        run: pytest ml-api-service/tests -v

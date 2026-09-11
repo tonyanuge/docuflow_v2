@@ -9,15 +9,16 @@ from hybrid_search import hybrid_search  # MUST be a function
 from vector_db.faiss_store import FAISSStore
 from workflow.router import WorkflowRouter
 from workflow.executor import WorkflowExecutor
-from security.guard import enforce_permission
-from security.roles import Role, Capability
+from security.guard import enforce_permission, PermissionDenied as GuardPermissionDenied
+from security.roles import Capability
 from audit.logger import AuditLogger
+from app.config.settings import DEFAULT_ROLE
 
 from ingest_file.text_reader import read_text_file
 from ingest_file.pdf_reader import extract_pdf_text
 from ingest_file.docx_reader import extract_docx_text
 from ingest_file.chunker import chunk_text
-from app.errors import PermissionDenied, NoRouteMatched, EmptySearchResults
+from app.errors import NoRouteMatched, EmptySearchResults
 from app.errors import DocuFlowError
 
 from audit.events import (
@@ -201,7 +202,11 @@ async def ingest_file(file: UploadFile = File(...)):
 @app.post("/route-from-search")
 def route_from_search(request: HybridSearchRequest):
 
-    role = Role.OPERATOR
+    # NOTE: `role` here is the statically configured default role
+    # (DOCUFLOW_DEFAULT_ROLE / settings.DEFAULT_ROLE), not an authenticated
+    # caller identity. There is no authentication in this repository — every
+    # request is evaluated as this configured role. See docs/RUNBOOK.md.
+    role = DEFAULT_ROLE
 
     try:
         # 1. Permission check
@@ -277,7 +282,7 @@ def route_from_search(request: HybridSearchRequest):
             "search_results": search_results
         }
 
-    except PermissionDenied as e:
+    except GuardPermissionDenied as e:
         audit_logger.log(
             event=ROUTE_DENIED,
             payload={

@@ -25,8 +25,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # -----------------------------
 # Application code
+# (the FastAPI app lives under ml-api-service/, not the repo root)
 # -----------------------------
-COPY . .
+COPY ml-api-service/ .
 
 # -----------------------------
 # Environment defaults

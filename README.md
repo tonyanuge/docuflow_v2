@@ -106,7 +106,7 @@ silent success):
 * No search results
 * No routing rule matched
 
-These failures do not crash the request silently — they are logged to the
+These failures do not crash the request silently, they are logged to the
 audit trail with a reason. The API does not yet translate them into a custom
 structured error body; an unhandled failure currently falls through to
 FastAPI's default error response (no stack trace is exposed in production
@@ -137,7 +137,7 @@ control, so it is not a compliance-grade audit store as-is).
 
 Why it matters:
 Every governed decision is traceable after the fact, which is the right
-foundation for audit/compliance use — but real regulatory or audit-grade
+foundation for audit/compliance use, but real regulatory or audit-grade
 guarantees would need additional controls (log integrity, retention policy,
 access control) that this prototype does not implement.
 
@@ -223,7 +223,7 @@ Project Lineage
 This repository represents an early, self-contained stage of this governed
 workflow-routing concept. It is kept public as an accurate record of that
 stage. Development of this idea continued afterward in a separate, private
-project that is not published here and is out of scope for this repository —
+project that is not published here and is out of scope for this repository,
 nothing from that later work has been backported into DocuFlow v2. If you're
 evaluating this repo, treat it as a snapshot of an earlier prototype, not the
 current state of the underlying idea.

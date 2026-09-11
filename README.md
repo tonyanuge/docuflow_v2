@@ -8,7 +8,7 @@ workflow-routing pattern. It combines:
 * Append-only audit logging
 
 It is a working demonstration of explainable, controllable AI-assisted
-decision routing — not a certified, production-hardened, or regulator-approved
+decision routing, not a certified, production-hardened, or regulator-approved
 system. See "What This Is (and Is Not)" and "Project Lineage" below.
 
 What Problem This Solves
@@ -94,8 +94,8 @@ happening unconditionally.
 Important limitation: there is no authentication in this repository. Every
 request is evaluated under a single statically configured role
 (`DOCUFLOW_DEFAULT_ROLE`, default `operator`) rather than a per-user
-authenticated identity. The capability check itself is real and enforced —
-what's missing is a way to tell *which* role a given caller actually is.
+authenticated identity. The capability check itself is real and enforced.
+What's missing is a way to tell *which* role a given caller actually is.
 
 4. Error Boundaries & Guardrails
 
@@ -132,7 +132,7 @@ Each audit record includes:
 * Timestamp (UTC)
 
 Stored as append-only JSONL (append-only by convention of how the app writes
-to it — the file itself has no tamper-evidence, integrity hashing, or access
+to it. The file itself has no tamper-evidence, integrity hashing, or access
 control, so it is not a compliance-grade audit store as-is).
 
 Why it matters:
@@ -170,7 +170,7 @@ mode (see `ml-api-service/app/config/settings.py`).
 This enables:
 * Local dev
 * Containerised deployment via the included `Dockerfile` / `docker-compose.yml`
-  (build and startup verified locally — see `docs/RUNBOOK.md`)
+  (build and startup verified locally. See `docs/RUNBOOK.md`)
 
 On-prem/production deployment beyond a single container has not been
 attempted or verified.
@@ -201,7 +201,7 @@ Project Status
 ✔ FAISS vector store
 ✔ YAML workflow routing, including simulated execution driven by the routing
   decision (queue/priority), not just logging
-✔ Capability-based permission checks (static configured role — no
+✔ Capability-based permission checks (static configured role, no
   authentication)
 ✔ Basic audit trail (JSONL, not tamper-evident)
 ✔ Environment-configurable paths and default role
